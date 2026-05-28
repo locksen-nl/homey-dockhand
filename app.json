@@ -464,7 +464,7 @@
       "name": {
         "en": "Server Stats"
       },
-      "height": "200%",
+      "height": "100%",
       "transparent": false,
       "api": {
         "getStats": {
