@@ -2,7 +2,7 @@
   "name": {
     "en": "Server Stats"
   },
-  "height": "200%",
+  "height": "150%",
   "transparent": false,
   "api": {
     "getStats": {
