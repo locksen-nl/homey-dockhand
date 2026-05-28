@@ -1,0 +1,14 @@
+{
+  "name": {
+    "en": "Server Stats"
+  },
+  "height": "200%",
+  "transparent": false,
+  "api": {
+    "getStats": {
+      "method": "GET",
+      "path": "/stats"
+    }
+  },
+  "settings": []
+}

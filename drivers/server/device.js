@@ -3,14 +3,19 @@
 const Homey = require('homey');
 const DockhandClient = require('../../lib/DockhandClient');
 
+const UPDATE_CHECK_INTERVAL = 3600 * 1000; // 1 hour
+
 class DockhandServerDevice extends Homey.Device {
   async onInit() {
     this._client = null;
     this._pollInterval = null;
+    this._updateInterval = null;
     this._containers = [];
     this._prevStates = {};
+    this._prevUpdates = new Set();
     this._wasOffline = false;
     this._firstPoll = true;
+    this._firstUpdateCheck = true;
 
     try {
       await this._initClient();
@@ -19,6 +24,7 @@ class DockhandServerDevice extends Homey.Device {
       this.error('onInit failed:', err.message);
     }
     this._startPolling();
+    this._startUpdateChecking();
   }
 
   async _initClient() {
@@ -41,6 +47,13 @@ class DockhandServerDevice extends Homey.Device {
     if (this._pollInterval) this.homey.clearInterval(this._pollInterval);
     const interval = Math.max(10, this.getSetting('poll_interval') || 30) * 1000;
     this._pollInterval = this.homey.setInterval(() => this._poll(), interval);
+  }
+
+  _startUpdateChecking() {
+    if (this._updateInterval) this.homey.clearInterval(this._updateInterval);
+    this._updateInterval = this.homey.setInterval(() => this._checkUpdates(), UPDATE_CHECK_INTERVAL);
+    // Run first check after 1 minute so it doesn't block startup
+    this.homey.setTimeout(() => this._checkUpdates(), 60 * 1000);
   }
 
   async _poll() {
@@ -88,6 +101,30 @@ class DockhandServerDevice extends Homey.Device {
     }
   }
 
+  async _checkUpdates() {
+    if (!this._client) return;
+    try {
+      const envId = this.getSetting('endpoint_id') || 1;
+      const raw = await this._client.getContainerUpdates(envId);
+      const updates = Array.isArray(raw) ? raw : [];
+
+      if (!this._firstUpdateCheck) {
+        for (const item of updates) {
+          const id = item.id || item.containerId;
+          const name = item.name || item.containerName || id;
+          if (id && !this._prevUpdates.has(id)) {
+            await this.driver.triggerContainerUpdateAvailable(this, name).catch(this.error.bind(this));
+          }
+        }
+      }
+
+      this._firstUpdateCheck = false;
+      this._prevUpdates = new Set(updates.map((c) => c.id || c.containerId).filter(Boolean));
+    } catch (err) {
+      this.error('Update check failed:', err.message);
+    }
+  }
+
   async _detectStateChanges() {
     for (const container of this._containers) {
       const prev = this._prevStates[container.id];
@@ -110,6 +147,12 @@ class DockhandServerDevice extends Homey.Device {
 
   getContainers() {
     return this._containers.slice();
+  }
+
+  async getDashboardStats() {
+    if (!this._client) return null;
+    const envId = this.getSetting('endpoint_id') || 1;
+    return this._client.getDashboardStats(envId);
   }
 
   async controlContainer(containerId, action) {
@@ -138,6 +181,7 @@ class DockhandServerDevice extends Homey.Device {
 
   async onDeleted() {
     if (this._pollInterval) this.homey.clearInterval(this._pollInterval);
+    if (this._updateInterval) this.homey.clearInterval(this._updateInterval);
   }
 }
 

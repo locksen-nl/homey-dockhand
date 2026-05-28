@@ -48,6 +48,12 @@
     "server_offline": {
       "title": "Server is offline gegaan"
     },
+    "container_update_available": {
+      "title": "Er is een update beschikbaar voor een container",
+      "tokens": {
+        "container_name": "Containernaam"
+      }
+    },
     "container_is_running": {
       "title": "Container draait",
       "args": {
