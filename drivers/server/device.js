@@ -179,7 +179,7 @@ class DockhandServerDevice extends Homey.Device {
     else if (action === 'restart') await this._client.restartContainer(envId, containerId);
     else throw new Error(`Unknown action: ${action}`);
 
-    this.homey.setTimeout(() => this._poll(), 2000);
+    this.homey.setTimeout(() => this._poll(), 1000);
   }
 
   async onSettings({ newSettings, changedKeys }) {

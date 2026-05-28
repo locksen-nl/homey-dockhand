@@ -256,7 +256,7 @@ async function handleAction(containerId, deviceId, action, btn) {
   try {
     await window.Homey.api('POST', '/container', { containerId, action, deviceId });
     window.Homey.hapticFeedback();
-    setTimeout(refresh, 2500);
+    setTimeout(refresh, 1000);
   } catch (err) {
     btn.disabled = false;
   }
