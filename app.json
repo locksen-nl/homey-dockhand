@@ -132,6 +132,34 @@
         ]
       },
       {
+        "id": "container_unhealthy",
+        "title": {
+          "en": "A container became unhealthy",
+          "nl": "Een container is ongezond geworden"
+        },
+        "titleFormatted": {
+          "en": "[[container_name]] became unhealthy",
+          "nl": "[[container_name]] is ongezond geworden"
+        },
+        "tokens": [
+          {
+            "name": "container_name",
+            "type": "string",
+            "title": {
+              "en": "Container name",
+              "nl": "Containernaam"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=server"
+          }
+        ]
+      },
+      {
         "id": "container_update_available",
         "title": {
           "en": "A container update is available",

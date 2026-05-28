@@ -48,6 +48,12 @@
     "server_offline": {
       "title": "Server went offline"
     },
+    "container_unhealthy": {
+      "title": "A container became unhealthy",
+      "tokens": {
+        "container_name": "Container name"
+      }
+    },
     "container_update_available": {
       "title": "A container update is available",
       "tokens": {

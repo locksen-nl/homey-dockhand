@@ -13,6 +13,7 @@ class DockhandServerDevice extends Homey.Device {
     this._containers = [];
     this._prevStates = {};
     this._prevUpdates = new Set();
+    this._prevUnhealthyIds = new Set();
     this._wasOffline = false;
     this._firstPoll = true;
     this._firstUpdateCheck = true;
@@ -126,14 +127,22 @@ class DockhandServerDevice extends Homey.Device {
   }
 
   async _detectStateChanges() {
+    const currentUnhealthyIds = new Set();
+
     for (const container of this._containers) {
       const prev = this._prevStates[container.id];
-      if (prev === undefined) continue;
 
       const isCrashed = container.state === 'exited'
         && container.status
         && container.status.includes('(')
         && !container.status.includes('(0)');
+
+      const isUnhealthy = container.state === 'unhealthy'
+        || (container.status && container.status.toLowerCase().includes('unhealthy'));
+
+      if (isUnhealthy) currentUnhealthyIds.add(container.id);
+
+      if (prev === undefined) continue;
 
       if (prev !== 'running' && container.state === 'running') {
         await this.driver.triggerContainerStarted(this, container.name).catch(this.error.bind(this));
@@ -142,7 +151,13 @@ class DockhandServerDevice extends Homey.Device {
       } else if (prev === 'running' && container.state !== 'running') {
         await this.driver.triggerContainerStopped(this, container.name).catch(this.error.bind(this));
       }
+
+      if (isUnhealthy && !this._prevUnhealthyIds.has(container.id)) {
+        await this.driver.triggerContainerUnhealthy(this, container.name).catch(this.error.bind(this));
+      }
     }
+
+    this._prevUnhealthyIds = currentUnhealthyIds;
   }
 
   getContainers() {

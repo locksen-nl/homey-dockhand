@@ -20,6 +20,7 @@ class DockhandServerDriver extends Homey.Driver {
     this._triggerContainerCrashed        = this.homey.flow.getDeviceTriggerCard('container_crashed');
     this._triggerServerOffline           = this.homey.flow.getDeviceTriggerCard('server_offline');
     this._triggerContainerUpdateAvailable = this.homey.flow.getDeviceTriggerCard('container_update_available');
+    this._triggerContainerUnhealthy       = this.homey.flow.getDeviceTriggerCard('container_unhealthy');
 
     this.homey.flow.getConditionCard('container_is_running')
       .registerRunListener(async ({ device, container }) => {
@@ -117,6 +118,10 @@ class DockhandServerDriver extends Homey.Driver {
 
   async triggerContainerUpdateAvailable(device, containerName) {
     return this._triggerContainerUpdateAvailable.trigger(device, { container_name: containerName }, {});
+  }
+
+  async triggerContainerUnhealthy(device, containerName) {
+    return this._triggerContainerUnhealthy.trigger(device, { container_name: containerName }, {});
   }
 
 }

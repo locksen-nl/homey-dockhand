@@ -125,9 +125,14 @@ function render() {
       block.appendChild(makeLabelRow('Storage', fmt(storageBytes)));
     }
 
-    // Containers
+    // Containers + health
     if (containers.total != null) {
       block.appendChild(makeContainersRow(containers));
+    }
+
+    // Health status
+    if (containers.total != null) {
+      block.appendChild(makeHealthRow(containers.unhealthy || 0));
     }
 
     content.appendChild(block);
@@ -156,6 +161,30 @@ function makeStatRow(label, percent, valueText) {
   row.appendChild(lbl);
   row.appendChild(barWrap);
   row.appendChild(val);
+  return row;
+}
+
+function makeHealthRow(unhealthyCount) {
+  const row = document.createElement('div');
+  row.className = 'stat-row';
+
+  const lbl = document.createElement('div');
+  lbl.className = 'stat-label';
+  lbl.textContent = 'Health';
+
+  const badge = document.createElement('span');
+  if (unhealthyCount === 0) {
+    badge.className = 'pill running';
+    badge.textContent = 'All healthy';
+  } else {
+    badge.className = 'pill stopped';
+    badge.style.background = 'rgba(239,68,68,0.15)';
+    badge.style.color = '#ef4444';
+    badge.textContent = `${unhealthyCount} unhealthy`;
+  }
+
+  row.appendChild(lbl);
+  row.appendChild(badge);
   return row;
 }
 

@@ -48,6 +48,12 @@
     "server_offline": {
       "title": "Server is offline gegaan"
     },
+    "container_unhealthy": {
+      "title": "Een container is ongezond geworden",
+      "tokens": {
+        "container_name": "Containernaam"
+      }
+    },
     "container_update_available": {
       "title": "Er is een update beschikbaar voor een container",
       "tokens": {
