@@ -1,0 +1,76 @@
+{
+  "pair": {
+    "title": "Verbinden met Dockhand",
+    "subtitle": "Vul je Dockhand URL en API-token in om te beginnen.",
+    "url_label": "Dockhand URL",
+    "url_hint": "Lokaal adres van je Dockhand-instantie",
+    "token_label": "API-token",
+    "token_hint": "Te vinden in Dockhand → Instellingen → API-tokens",
+    "endpoint_label": "Omgeving",
+    "connect": "Verbinden",
+    "connecting": "Verbinden...",
+    "add": "Apparaat toevoegen",
+    "error_fill_all": "Vul alle velden in."
+  },
+  "error": {
+    "connection_failed": "Kan geen verbinding maken met Dockhand. Controleer de URL en het API-token.",
+    "poll_failed": "Verbinding met Dockhand verbroken.",
+    "not_connected": "Niet verbonden met Dockhand.",
+    "not_validated": "Valideer eerst de verbinding.",
+    "endpoint_not_found": "Omgeving niet gevonden."
+  },
+  "widget": {
+    "no_containers": "Geen containers gevonden",
+    "not_connected": "Server niet bereikbaar",
+    "error_loading": "Kan containers niet laden",
+    "search_placeholder": "Zoek containers…",
+    "no_results": "Geen resultaten"
+  },
+  "flow": {
+    "container_started": {
+      "title": "Een container is gestart",
+      "tokens": {
+        "container_name": "Containernaam"
+      }
+    },
+    "container_stopped": {
+      "title": "Een container is gestopt",
+      "tokens": {
+        "container_name": "Containernaam"
+      }
+    },
+    "container_crashed": {
+      "title": "Een container is gecrasht",
+      "tokens": {
+        "container_name": "Containernaam"
+      }
+    },
+    "server_offline": {
+      "title": "Server is offline gegaan"
+    },
+    "container_is_running": {
+      "title": "Container draait",
+      "args": {
+        "container": "Container"
+      }
+    },
+    "container_start": {
+      "title": "Start een container",
+      "args": {
+        "container": "Container"
+      }
+    },
+    "container_stop": {
+      "title": "Stop een container",
+      "args": {
+        "container": "Container"
+      }
+    },
+    "container_restart": {
+      "title": "Herstart een container",
+      "args": {
+        "container": "Container"
+      }
+    }
+  }
+}

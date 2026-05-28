@@ -1,0 +1,9 @@
+{
+  "id": "container_restart",
+  "title": { "en": "Restart a container", "nl": "Herstart een container" },
+  "titleFormatted": { "en": "Restart [[container]]", "nl": "Herstart [[container]]" },
+  "args": [
+    { "name": "device", "type": "device", "filter": "driver_id=server" },
+    { "name": "container", "type": "autocomplete", "placeholder": { "en": "Search containers...", "nl": "Zoek containers..." } }
+  ]
+}

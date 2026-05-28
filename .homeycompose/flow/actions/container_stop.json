@@ -1,0 +1,9 @@
+{
+  "id": "container_stop",
+  "title": { "en": "Stop a container", "nl": "Stop een container" },
+  "titleFormatted": { "en": "Stop [[container]]", "nl": "Stop [[container]]" },
+  "args": [
+    { "name": "device", "type": "device", "filter": "driver_id=server" },
+    { "name": "container", "type": "autocomplete", "placeholder": { "en": "Search containers...", "nl": "Zoek containers..." } }
+  ]
+}

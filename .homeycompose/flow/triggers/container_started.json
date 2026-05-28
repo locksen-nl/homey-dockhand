@@ -1,0 +1,11 @@
+{
+  "id": "container_started",
+  "title": { "en": "A container started", "nl": "Een container is gestart" },
+  "titleFormatted": { "en": "A container started", "nl": "Een container is gestart" },
+  "tokens": [
+    { "name": "container_name", "type": "string", "title": { "en": "Container name", "nl": "Containernaam" } }
+  ],
+  "args": [
+    { "name": "device", "type": "device", "filter": "driver_id=server" }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "com.robnordkamp.dockhand",
+  "version": "1.0.0",
+  "compatibility": ">=12.3.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Dockhand"
+  },
+  "description": {
+    "en": "Docker container monitoring and control via Dockhand, right inside Homey.",
+    "nl": "Docker-containerbeheer via Dockhand, direct vanuit Homey."
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "./assets/images/small.png",
+    "large": "./assets/images/large.png",
+    "xlarge": "./assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "locksen",
+    "email": "r.nordkamp@icloud.com"
+  },
+  "support": "mailto:r.nordkamp@icloud.com",
+  "brandColor": "#14B8A6",
+  "tags": {
+    "en": [
+      "docker",
+      "container",
+      "dockhand",
+      "server",
+      "devops"
+    ],
+    "nl": [
+      "docker",
+      "container",
+      "dockhand",
+      "server",
+      "devops"
+    ]
+  }
+}

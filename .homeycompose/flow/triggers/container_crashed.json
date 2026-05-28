@@ -1,0 +1,11 @@
+{
+  "id": "container_crashed",
+  "title": { "en": "A container crashed", "nl": "Een container is gecrasht" },
+  "titleFormatted": { "en": "A container crashed", "nl": "Een container is gecrasht" },
+  "tokens": [
+    { "name": "container_name", "type": "string", "title": { "en": "Container name", "nl": "Containernaam" } }
+  ],
+  "args": [
+    { "name": "device", "type": "device", "filter": "driver_id=server" }
+  ]
+}

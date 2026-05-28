@@ -1,0 +1,9 @@
+{
+  "id": "container_start",
+  "title": { "en": "Start a container", "nl": "Start een container" },
+  "titleFormatted": { "en": "Start [[container]]", "nl": "Start [[container]]" },
+  "args": [
+    { "name": "device", "type": "device", "filter": "driver_id=server" },
+    { "name": "container", "type": "autocomplete", "placeholder": { "en": "Search containers...", "nl": "Zoek containers..." } }
+  ]
+}

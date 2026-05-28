@@ -1,0 +1,76 @@
+{
+  "pair": {
+    "title": "Connect to Dockhand",
+    "subtitle": "Enter your Dockhand URL and API token to get started.",
+    "url_label": "Dockhand URL",
+    "url_hint": "Local address of your Dockhand instance",
+    "token_label": "API Token",
+    "token_hint": "Found in Dockhand → Settings → API Tokens",
+    "endpoint_label": "Environment",
+    "connect": "Connect",
+    "connecting": "Connecting...",
+    "add": "Add Device",
+    "error_fill_all": "Please fill in all fields."
+  },
+  "error": {
+    "connection_failed": "Could not connect to Dockhand. Check the URL and API token.",
+    "poll_failed": "Lost connection to Dockhand.",
+    "not_connected": "Not connected to Dockhand.",
+    "not_validated": "Please validate the connection first.",
+    "endpoint_not_found": "Environment not found."
+  },
+  "widget": {
+    "no_containers": "No containers found",
+    "not_connected": "Server unreachable",
+    "error_loading": "Could not load containers",
+    "search_placeholder": "Search containers…",
+    "no_results": "No results"
+  },
+  "flow": {
+    "container_started": {
+      "title": "A container started",
+      "tokens": {
+        "container_name": "Container name"
+      }
+    },
+    "container_stopped": {
+      "title": "A container stopped",
+      "tokens": {
+        "container_name": "Container name"
+      }
+    },
+    "container_crashed": {
+      "title": "A container crashed",
+      "tokens": {
+        "container_name": "Container name"
+      }
+    },
+    "server_offline": {
+      "title": "Server went offline"
+    },
+    "container_is_running": {
+      "title": "Container is running",
+      "args": {
+        "container": "Container"
+      }
+    },
+    "container_start": {
+      "title": "Start a container",
+      "args": {
+        "container": "Container"
+      }
+    },
+    "container_stop": {
+      "title": "Stop a container",
+      "args": {
+        "container": "Container"
+      }
+    },
+    "container_restart": {
+      "title": "Restart a container",
+      "args": {
+        "container": "Container"
+      }
+    }
+  }
+}

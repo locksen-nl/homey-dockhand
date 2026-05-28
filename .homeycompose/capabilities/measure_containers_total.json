@@ -1,0 +1,13 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Total Containers"
+  },
+  "min": 0,
+  "max": 9999,
+  "decimals": 0,
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "./assets/icon.svg"
+}

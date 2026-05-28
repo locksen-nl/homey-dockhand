@@ -1,0 +1,436 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.robnordkamp.dockhand",
+  "version": "1.0.0",
+  "compatibility": ">=12.3.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Dockhand"
+  },
+  "description": {
+    "en": "Docker container monitoring and control via Dockhand, right inside Homey.",
+    "nl": "Docker-containerbeheer via Dockhand, direct vanuit Homey."
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "./assets/images/small.png",
+    "large": "./assets/images/large.png",
+    "xlarge": "./assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "locksen",
+    "email": "r.nordkamp@icloud.com"
+  },
+  "support": "mailto:r.nordkamp@icloud.com",
+  "brandColor": "#14B8A6",
+  "tags": {
+    "en": [
+      "docker",
+      "container",
+      "dockhand",
+      "server",
+      "devops"
+    ],
+    "nl": [
+      "docker",
+      "container",
+      "dockhand",
+      "server",
+      "devops"
+    ]
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "container_crashed",
+        "title": {
+          "en": "A container crashed",
+          "nl": "Een container is gecrasht"
+        },
+        "titleFormatted": {
+          "en": "A container crashed",
+          "nl": "Een container is gecrasht"
+        },
+        "tokens": [
+          {
+            "name": "container_name",
+            "type": "string",
+            "title": {
+              "en": "Container name",
+              "nl": "Containernaam"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=server"
+          }
+        ]
+      },
+      {
+        "id": "container_started",
+        "title": {
+          "en": "A container started",
+          "nl": "Een container is gestart"
+        },
+        "titleFormatted": {
+          "en": "A container started",
+          "nl": "Een container is gestart"
+        },
+        "tokens": [
+          {
+            "name": "container_name",
+            "type": "string",
+            "title": {
+              "en": "Container name",
+              "nl": "Containernaam"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=server"
+          }
+        ]
+      },
+      {
+        "id": "container_stopped",
+        "title": {
+          "en": "A container stopped",
+          "nl": "Een container is gestopt"
+        },
+        "titleFormatted": {
+          "en": "A container stopped",
+          "nl": "Een container is gestopt"
+        },
+        "tokens": [
+          {
+            "name": "container_name",
+            "type": "string",
+            "title": {
+              "en": "Container name",
+              "nl": "Containernaam"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=server"
+          }
+        ]
+      },
+      {
+        "id": "server_offline",
+        "title": {
+          "en": "Server went offline",
+          "nl": "Server is offline gegaan"
+        },
+        "titleFormatted": {
+          "en": "Server went offline",
+          "nl": "Server is offline gegaan"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=server"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "container_is_running",
+        "title": {
+          "en": "Container !{{is|is not}} running",
+          "nl": "Container !{{is|is niet}} actief"
+        },
+        "titleFormatted": {
+          "en": "[[container]] !{{is|is not}} running",
+          "nl": "[[container]] !{{is|is niet}} actief"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=server"
+          },
+          {
+            "name": "container",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Search containers...",
+              "nl": "Zoek containers..."
+            }
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "container_restart",
+        "title": {
+          "en": "Restart a container",
+          "nl": "Herstart een container"
+        },
+        "titleFormatted": {
+          "en": "Restart [[container]]",
+          "nl": "Herstart [[container]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=server"
+          },
+          {
+            "name": "container",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Search containers...",
+              "nl": "Zoek containers..."
+            }
+          }
+        ]
+      },
+      {
+        "id": "container_start",
+        "title": {
+          "en": "Start a container",
+          "nl": "Start een container"
+        },
+        "titleFormatted": {
+          "en": "Start [[container]]",
+          "nl": "Start [[container]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=server"
+          },
+          {
+            "name": "container",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Search containers...",
+              "nl": "Zoek containers..."
+            }
+          }
+        ]
+      },
+      {
+        "id": "container_stop",
+        "title": {
+          "en": "Stop a container",
+          "nl": "Stop een container"
+        },
+        "titleFormatted": {
+          "en": "Stop [[container]]",
+          "nl": "Stop [[container]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=server"
+          },
+          {
+            "name": "container",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Search containers...",
+              "nl": "Zoek containers..."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "id": "server",
+      "name": {
+        "en": "Dockhand Server"
+      },
+      "class": "other",
+      "capabilities": [
+        "alarm_generic",
+        "measure_containers_running",
+        "measure_containers_total"
+      ],
+      "capabilitiesOptions": {
+        "alarm_generic": {
+          "title": {
+            "en": "Server Offline"
+          },
+          "insightsTitleTrue": {
+            "en": "Server went offline"
+          },
+          "insightsTitleFalse": {
+            "en": "Server came online"
+          }
+        }
+      },
+      "energy": {
+        "approximation": {
+          "usageConstant": 0
+        }
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "images": {
+        "small": "./drivers/server/assets/images/small.png",
+        "large": "./drivers/server/assets/images/large.png",
+        "xlarge": "./drivers/server/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "instructions",
+          "navigation": {
+            "next": "login"
+          }
+        },
+        {
+          "id": "login",
+          "navigation": {
+            "next": "list_devices"
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "id": "url",
+          "type": "text",
+          "label": {
+            "en": "Dockhand URL"
+          },
+          "value": "http://dockhand:3000",
+          "hint": {
+            "en": "The URL of your Dockhand instance, e.g. http://192.168.1.100:3000"
+          }
+        },
+        {
+          "id": "username",
+          "type": "text",
+          "label": {
+            "en": "Username"
+          },
+          "value": "",
+          "hint": {
+            "en": "Your Dockhand username. Leave empty if authentication is disabled."
+          }
+        },
+        {
+          "id": "password",
+          "type": "password",
+          "label": {
+            "en": "Password"
+          },
+          "value": "",
+          "hint": {
+            "en": "Your Dockhand password. Leave empty if authentication is disabled."
+          }
+        },
+        {
+          "id": "endpoint_id",
+          "type": "number",
+          "label": {
+            "en": "Environment ID"
+          },
+          "value": 1,
+          "hint": {
+            "en": "The Dockhand environment ID. Check your Dockhand settings or select during pairing."
+          }
+        },
+        {
+          "id": "poll_interval",
+          "type": "number",
+          "label": {
+            "en": "Refresh interval (seconds)"
+          },
+          "value": 30,
+          "hint": {
+            "en": "How often to refresh container data. Minimum 10 seconds."
+          }
+        }
+      ]
+    }
+  ],
+  "widgets": {
+    "containers": {
+      "name": {
+        "en": "Docker Containers"
+      },
+      "height": "200%",
+      "transparent": false,
+      "api": {
+        "getContainers": {
+          "method": "GET",
+          "path": "/containers"
+        },
+        "controlContainer": {
+          "method": "POST",
+          "path": "/container"
+        }
+      },
+      "settings": [],
+      "id": "containers"
+    }
+  },
+  "capabilities": {
+    "measure_containers_running": {
+      "type": "number",
+      "title": {
+        "en": "Running Containers"
+      },
+      "min": 0,
+      "max": 9999,
+      "decimals": 0,
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "./assets/icon.svg"
+    },
+    "measure_containers_total": {
+      "type": "number",
+      "title": {
+        "en": "Total Containers"
+      },
+      "min": 0,
+      "max": 9999,
+      "decimals": 0,
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "./assets/icon.svg"
+    }
+  }
+}

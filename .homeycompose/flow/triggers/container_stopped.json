@@ -1,0 +1,11 @@
+{
+  "id": "container_stopped",
+  "title": { "en": "A container stopped", "nl": "Een container is gestopt" },
+  "titleFormatted": { "en": "A container stopped", "nl": "Een container is gestopt" },
+  "tokens": [
+    { "name": "container_name", "type": "string", "title": { "en": "Container name", "nl": "Containernaam" } }
+  ],
+  "args": [
+    { "name": "device", "type": "device", "filter": "driver_id=server" }
+  ]
+}

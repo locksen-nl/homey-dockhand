@@ -1,0 +1,9 @@
+{
+  "id": "container_is_running",
+  "title": { "en": "Container !{{is|is not}} running", "nl": "Container !{{is|is niet}} actief" },
+  "titleFormatted": { "en": "[[container]] !{{is|is not}} running", "nl": "[[container]] !{{is|is niet}} actief" },
+  "args": [
+    { "name": "device", "type": "device", "filter": "driver_id=server" },
+    { "name": "container", "type": "autocomplete", "placeholder": { "en": "Search containers...", "nl": "Zoek containers..." } }
+  ]
+}
