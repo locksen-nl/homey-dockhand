@@ -56,6 +56,12 @@ function renderEnvBar() {
   wrap.style.display = '';
   bar.innerHTML = '';
 
+  const allBtn = document.createElement('button');
+  allBtn.className = `env-btn${selectedDeviceId === 'all' ? ' active' : ''}`;
+  allBtn.textContent = 'All';
+  allBtn.onclick = () => { selectedDeviceId = 'all'; renderEnvBar(); render(); };
+  bar.appendChild(allBtn);
+
   devices.forEach((dev) => {
     const btn = document.createElement('button');
     btn.className = `env-btn${selectedDeviceId === dev.id ? ' active' : ''}${!dev.connected ? ' offline' : ''}`;

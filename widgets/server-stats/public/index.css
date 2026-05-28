@@ -104,7 +104,11 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.content::-webkit-scrollbar { display: none; 
 }
 
 .placeholder {
@@ -146,7 +150,11 @@ html, body {
   height: 6px;
   background: var(--bar-bg);
   border-radius: 4px;
-  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.content::-webkit-scrollbar { display: none; 
 }
 
 .stat-bar {
