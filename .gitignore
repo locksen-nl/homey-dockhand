@@ -1,3 +1,5 @@
 .homeybuild/
 node_modules/
 .DS_Store
+CLAUDE.md
+DOCKHAND_API.md
