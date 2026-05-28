@@ -103,22 +103,17 @@ function render() {
       continue;
     }
 
-    const host = server.stats.host || {};
+    const metrics = server.stats.metrics || {};
     const containers = server.stats.containers || {};
 
     // CPU
-    const cpuPct = pct(host.cpuPercent);
+    const cpuPct = pct(metrics.cpuPercent);
     block.appendChild(makeStatRow('CPU', cpuPct, `${cpuPct}%`));
 
     // Memory
-    const memPct = pct(host.memoryPercent);
-    const memLabel = `${fmt(host.memoryUsed)} / ${fmt(host.memoryTotal)}`;
+    const memPct = pct(metrics.memoryPercent);
+    const memLabel = `${fmt(metrics.memoryUsed)} / ${fmt(metrics.memoryTotal)}`;
     block.appendChild(makeStatRow('RAM', memPct, memLabel));
-
-    // Disk
-    const diskPct = host.diskTotal ? pct((host.diskUsed / host.diskTotal) * 100) : 0;
-    const diskLabel = `${fmt(host.diskUsed)} / ${fmt(host.diskTotal)}`;
-    block.appendChild(makeStatRow('Disk', diskPct, diskLabel));
 
     // Containers
     if (containers.total != null) {
