@@ -253,12 +253,22 @@ function makeBtn(svgHtml, action, containerId, deviceId, cls) {
 
 async function handleAction(containerId, deviceId, action, btn) {
   btn.disabled = true;
+
+  // Mark the row as pending so the user sees immediate feedback
+  const row = btn.closest('.row');
+  if (row) {
+    row.classList.add('pending');
+    const dot = row.querySelector('.dot');
+    if (dot) dot.className = 'dot restarting';
+  }
+
   try {
     await window.Homey.api('POST', '/container', { containerId, action, deviceId });
     window.Homey.hapticFeedback();
     setTimeout(refresh, 1000);
   } catch (err) {
     btn.disabled = false;
+    if (row) row.classList.remove('pending');
   }
 }
 

@@ -244,6 +244,7 @@ html, body {
 
 .row.running  { background: var(--bg-row-running); }
 .row.crashed  { background: #fff5f5; border-color: #fca5a5; }
+.row.pending  { opacity: 0.6; }
 
 @media (prefers-color-scheme: dark) {
   .row.crashed { background: #2d1515; border-color: #7f1d1d; }
