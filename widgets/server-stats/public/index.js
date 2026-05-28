@@ -116,6 +116,15 @@ function render() {
     const memLabel = `${fmt(metrics.memoryUsed)} / ${fmt(metrics.memoryTotal)}`;
     block.appendChild(makeStatRow('RAM', memPct, memLabel));
 
+    // Docker storage
+    const storageBytes = (server.stats.images?.totalSize || 0)
+      + (server.stats.containersSize || 0)
+      + (server.stats.volumes?.totalSize || 0)
+      + (server.stats.buildCacheSize || 0);
+    if (storageBytes > 0) {
+      block.appendChild(makeLabelRow('Storage', fmt(storageBytes)));
+    }
+
     // Containers
     if (containers.total != null) {
       block.appendChild(makeContainersRow(containers));
@@ -146,6 +155,25 @@ function makeStatRow(label, percent, valueText) {
 
   row.appendChild(lbl);
   row.appendChild(barWrap);
+  row.appendChild(val);
+  return row;
+}
+
+function makeLabelRow(label, value) {
+  const row = document.createElement('div');
+  row.className = 'stat-row';
+
+  const lbl = document.createElement('div');
+  lbl.className = 'stat-label';
+  lbl.textContent = label;
+
+  const val = document.createElement('div');
+  val.className = 'stat-value';
+  val.style.flex = '1';
+  val.style.textAlign = 'left';
+  val.textContent = value;
+
+  row.appendChild(lbl);
   row.appendChild(val);
   return row;
 }
