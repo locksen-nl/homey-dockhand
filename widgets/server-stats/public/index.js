@@ -107,8 +107,9 @@ function render() {
     const containers = server.stats.containers || {};
 
     // CPU
-    const cpuPct = pct(metrics.cpuPercent);
-    block.appendChild(makeStatRow('CPU', cpuPct, `${cpuPct}%`));
+    const cpuRaw = metrics.cpuPercent != null ? Math.min(100, metrics.cpuPercent) : 0;
+    const cpuDisplay = metrics.cpuPercent != null ? `${metrics.cpuPercent.toFixed(1)}%` : '—';
+    block.appendChild(makeStatRow('CPU', cpuRaw, cpuDisplay));
 
     // Memory
     const memPct = pct(metrics.memoryPercent);
