@@ -1,12 +1,3 @@
-Monitor and control your Docker containers via Dockhand directly from Homey.
+Dockhand brings your Docker environment into Homey. Connect to your Dockhand server and keep an eye on all your containers without leaving the Homey app — whether they are running, stopped or have crashed.
 
-**Widgets**
-- Container dashboard — view all containers, start, stop or restart with one tap
-- Server stats — real-time CPU, RAM, storage and health status
-
-**Flow cards**
-- Triggers: container started, stopped, crashed, unhealthy, update available, server offline
-- Conditions: container is running
-- Actions: start, stop, restart a container
-
-Requires Dockhand running on your local network. Homey Pro only.
+With Flow support and two dashboard widgets, your Docker setup becomes part of your home automation. React automatically to container events and always have the status of your server at a glance.
