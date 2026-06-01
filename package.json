@@ -1,6 +1,6 @@
 {
   "name": "com.robnordkamp.dockhand",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Dockhand Docker management integration for Homey",
   "main": "app.js",
   "scripts": {
