@@ -12,11 +12,12 @@ class DockhandServerDevice extends Homey.Device {
     this._updateInterval = null;
     this._containers = [];
     this._prevStates = {};
-    this._prevUpdates = new Set();
     this._prevUnhealthyIds = new Set();
     this._wasOffline = false;
     this._firstPoll = true;
-    this._firstUpdateCheck = true;
+
+    const stored = await this.getStoreValue('knownUpdates') || [];
+    this._prevUpdates = new Set(stored);
 
     try {
       await this._initClient();
@@ -107,20 +108,19 @@ class DockhandServerDevice extends Homey.Device {
     try {
       const envId = this.getSetting('endpoint_id') || 1;
       const raw = await this._client.getContainerUpdates(envId);
-      const updates = Array.isArray(raw) ? raw : [];
+      const updates = Array.isArray(raw) ? raw : (raw?.pendingUpdates ?? []);
 
-      if (!this._firstUpdateCheck) {
-        for (const item of updates) {
-          const id = item.id || item.containerId;
-          const name = item.name || item.containerName || id;
-          if (id && !this._prevUpdates.has(id)) {
-            await this.driver.triggerContainerUpdateAvailable(this, name).catch(this.error.bind(this));
-          }
+      for (const item of updates) {
+        const id = item.id || item.containerId;
+        const name = item.name || item.containerName || id;
+        if (id && !this._prevUpdates.has(id)) {
+          await this.driver.triggerContainerUpdateAvailable(this, name).catch(this.error.bind(this));
         }
       }
 
-      this._firstUpdateCheck = false;
       this._prevUpdates = new Set(updates.map((c) => c.id || c.containerId).filter(Boolean));
+      await this.setStoreValue('knownUpdates', [...this._prevUpdates]).catch(this.error.bind(this));
+      await this.setCapabilityValue('measure_updates_available', updates.length).catch(this.error.bind(this));
     } catch (err) {
       this.error('Update check failed:', err.message);
     }

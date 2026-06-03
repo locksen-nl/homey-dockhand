@@ -1,4 +1,8 @@
 {
+  "1.0.1": {
+    "en": "Fixed container update detection. Corrected the API endpoint and response parsing so the 'update available' flow card and capability now work correctly.",
+    "nl": "Update-detectie voor containers gerepareerd. Endpoint en response-verwerking gecorrigeerd zodat de 'update beschikbaar' flow-kaart en capability nu correct werken."
+  },
   "1.0.0": {
     "en": "Initial release. Monitor and control your Docker containers via Dockhand directly from Homey. Includes a container dashboard widget, a server stats widget (CPU, RAM, storage), and flow cards for container started, stopped, crashed, unhealthy, and update available events.",
     "nl": "Eerste versie. Beheer je Docker-containers via Dockhand vanuit Homey. Inclusief een container-widget, een serverstatistieken-widget (CPU, RAM, opslag) en flow-kaarten voor container gestart, gestopt, gecrasht, ongezond en update beschikbaar."
