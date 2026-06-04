@@ -1,7 +1,7 @@
 {
   "1.0.2": {
-    "en": "Fixed flow card titles for 'container became unhealthy' and 'container update available' triggers, as flagged by Homey App Store review.",
-    "nl": "Flow-kaarttitels gecorrigeerd voor 'container ongezond' en 'container update beschikbaar' triggers, zoals aangegeven door de Homey App Store review."
+    "en": "Fixed flow card titles for the unhealthy and update available triggers.",
+    "nl": "Flow-kaarttitels gecorrigeerd voor de ongezond en update beschikbaar triggers."
   },
   "1.0.1": {
     "en": "Fixed container update detection. Corrected the API endpoint and response parsing so the 'update available' flow card and capability now work correctly.",
