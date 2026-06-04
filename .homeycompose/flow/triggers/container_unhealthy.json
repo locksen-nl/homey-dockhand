@@ -1,7 +1,7 @@
 {
   "id": "container_unhealthy",
   "title": { "en": "A container became unhealthy", "nl": "Een container is ongezond geworden" },
-  "titleFormatted": { "en": "[[container_name]] became unhealthy", "nl": "[[container_name]] is ongezond geworden" },
+  "titleFormatted": { "en": "A container became unhealthy", "nl": "Een container is ongezond geworden" },
   "tokens": [
     { "name": "container_name", "type": "string", "title": { "en": "Container name", "nl": "Containernaam" } }
   ],

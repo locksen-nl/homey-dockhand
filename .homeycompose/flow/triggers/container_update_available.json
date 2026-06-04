@@ -1,7 +1,7 @@
 {
   "id": "container_update_available",
   "title": { "en": "A container update is available", "nl": "Er is een update beschikbaar voor een container" },
-  "titleFormatted": { "en": "An update is available for [[container_name]]", "nl": "Er is een update beschikbaar voor [[container_name]]" },
+  "titleFormatted": { "en": "A container update is available", "nl": "Er is een update beschikbaar voor een container" },
   "tokens": [
     { "name": "container_name", "type": "string", "title": { "en": "Container name", "nl": "Containernaam" } }
   ],
