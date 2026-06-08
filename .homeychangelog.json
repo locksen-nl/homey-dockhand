@@ -1,4 +1,8 @@
 {
+  "1.0.3": {
+    "en": "Fixed false crash triggers for temporary update containers (the -old suffix). Action cards for start, stop, and restart now accept flow tokens and Logic variables as container name.",
+    "nl": "Valse crash-triggers voor tijdelijke update-containers (het -old achtervoegsel) verholpen. Actie-kaarten voor starten, stoppen en herstarten accepteren nu flow-tokens en Logic-variabelen als containernaam."
+  },
   "1.0.2": {
     "en": "Fixed flow card titles for the unhealthy and update available triggers.",
     "nl": "Flow-kaarttitels gecorrigeerd voor de ongezond en update beschikbaar triggers."

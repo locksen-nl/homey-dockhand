@@ -130,6 +130,8 @@ class DockhandServerDevice extends Homey.Device {
     const currentUnhealthyIds = new Set();
 
     for (const container of this._containers) {
+      if (container.name.endsWith('-old')) continue;
+
       const prev = this._prevStates[container.id];
 
       const isCrashed = container.state === 'exited'

@@ -4,6 +4,6 @@
   "titleFormatted": { "en": "Start [[container]]", "nl": "Start [[container]]" },
   "args": [
     { "name": "device", "type": "device", "filter": "driver_id=server" },
-    { "name": "container", "type": "autocomplete", "placeholder": { "en": "Search containers...", "nl": "Zoek containers..." } }
+    { "name": "container", "type": "text", "placeholder": { "en": "Container name...", "nl": "Containernaam..." } }
   ]
 }

@@ -17,7 +17,8 @@
     "poll_failed": "Verbinding met Dockhand verbroken.",
     "not_connected": "Niet verbonden met Dockhand.",
     "not_validated": "Valideer eerst de verbinding.",
-    "endpoint_not_found": "Omgeving niet gevonden."
+    "endpoint_not_found": "Omgeving niet gevonden.",
+    "container_not_found": "Container niet gevonden: {name}"
   },
   "widget": {
     "no_containers": "Geen containers gevonden",

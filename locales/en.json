@@ -17,7 +17,8 @@
     "poll_failed": "Lost connection to Dockhand.",
     "not_connected": "Not connected to Dockhand.",
     "not_validated": "Please validate the connection first.",
-    "endpoint_not_found": "Environment not found."
+    "endpoint_not_found": "Environment not found.",
+    "container_not_found": "Container not found: {name}"
   },
   "widget": {
     "no_containers": "No containers found",

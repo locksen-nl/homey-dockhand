@@ -33,27 +33,27 @@ class DockhandServerDriver extends Homey.Driver {
 
     this.homey.flow.getActionCard('container_start')
       .registerRunListener(async ({ device, container }) => {
-        await device.controlContainer(container.id, 'start');
-      })
-      .registerArgumentAutocompleteListener('container', async (query, { device }) => {
-        return this._autocomplete(query, device, 'stopped');
+        const found = this._findContainerByName(device, container);
+        await device.controlContainer(found.id, 'start');
       });
 
     this.homey.flow.getActionCard('container_stop')
       .registerRunListener(async ({ device, container }) => {
-        await device.controlContainer(container.id, 'stop');
-      })
-      .registerArgumentAutocompleteListener('container', async (query, { device }) => {
-        return this._autocomplete(query, device, 'running');
+        const found = this._findContainerByName(device, container);
+        await device.controlContainer(found.id, 'stop');
       });
 
     this.homey.flow.getActionCard('container_restart')
       .registerRunListener(async ({ device, container }) => {
-        await device.controlContainer(container.id, 'restart');
-      })
-      .registerArgumentAutocompleteListener('container', async (query, { device }) => {
-        return this._autocomplete(query, device);
+        const found = this._findContainerByName(device, container);
+        await device.controlContainer(found.id, 'restart');
       });
+  }
+
+  _findContainerByName(device, name) {
+    const found = device.getContainers().find((c) => c.name.toLowerCase() === name.toLowerCase().trim());
+    if (!found) throw new Error(this.homey.__('error.container_not_found', { name }));
+    return found;
   }
 
   _autocomplete(query, device, filterState = null) {
