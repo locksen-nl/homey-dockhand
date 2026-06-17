@@ -10,6 +10,8 @@ class DockhandServerDevice extends Homey.Device {
     this._client = null;
     this._pollInterval = null;
     this._updateInterval = null;
+    this._polling = false;
+    this._checkingUpdates = false;
     this._containers = [];
     this._prevStates = {};
     this._prevUnhealthyIds = new Set();
@@ -59,9 +61,11 @@ class DockhandServerDevice extends Homey.Device {
   }
 
   async _poll() {
+    if (this._polling) return;
+    this._polling = true;
     if (!this._client) {
       await this._initClient();
-      if (!this._client) return;
+      if (!this._client) { this._polling = false; return; }
     }
 
     try {
@@ -100,11 +104,14 @@ class DockhandServerDevice extends Homey.Device {
 
       await this.setCapabilityValue('alarm_generic', true).catch(this.error.bind(this));
       await this.setUnavailable(`${this.homey.__('error.poll_failed')} (${err.message})`);
+    } finally {
+      this._polling = false;
     }
   }
 
   async _checkUpdates() {
-    if (!this._client) return;
+    if (this._checkingUpdates || !this._client) return;
+    this._checkingUpdates = true;
     try {
       const envId = this.getSetting('endpoint_id') || 1;
       const raw = await this._client.getContainerUpdates(envId);
@@ -123,6 +130,8 @@ class DockhandServerDevice extends Homey.Device {
       await this.setCapabilityValue('measure_updates_available', updates.length).catch(this.error.bind(this));
     } catch (err) {
       this.error('Update check failed:', err.message);
+    } finally {
+      this._checkingUpdates = false;
     }
   }
 

@@ -1,4 +1,8 @@
 {
+  "1.0.4": {
+    "en": "Fixed a resource issue where slow Dockhand responses could cause multiple concurrent polls to stack up, leading to high memory usage on the Docker host.",
+    "nl": "Een probleem verholpen waarbij trage Dockhand-responses konden leiden tot gestapelde gelijktijdige polls, wat resulteerde in hoog geheugengebruik op de Docker-host."
+  },
   "1.0.3": {
     "en": "Fixed false crash triggers for temporary update containers (the -old suffix). Action cards for start, stop, and restart now accept flow tokens and Logic variables as container name.",
     "nl": "Valse crash-triggers voor tijdelijke update-containers (het -old achtervoegsel) verholpen. Actie-kaarten voor starten, stoppen en herstarten accepteren nu flow-tokens en Logic-variabelen als containernaam."
